@@ -1,0 +1,218 @@
+# -*- mode: python ; coding: utf-8 -*-
+"""
+PyInstaller spec for the Darkstar One Modding Suite.
+
+Run it through ``packaging/build.py`` rather than directly -- that script
+checks the prerequisites first and verifies the result afterwards, and the
+checks are the reason the build is worth trusting.
+
+    python packaging/build.py
+
+DESIGN NOTES
+------------
+``console=False`` is the whole point of this file and the reason
+``dso_app/frozen.py`` exists.  A windowed process has no stdout and no stderr;
+in Python those are ``None``, and anything that writes to them raises.  Do not
+"temporarily" set this to True to debug a build: that changes the very
+configuration you are debugging.  Use ``--debug-console`` on ``build.py``, which
+produces a *separate* executable and leaves this one alone.
+
+The one-folder layout (``COLLECT``, not a one-file ``EXE``) is deliberate:
+
+* PySide6 is LGPLv3.  Shipping its DLLs as separate files next to the
+  executable is what satisfies the relinking requirement, and is why this
+  application can be MIT (see APP_PLAN.md 2).  A one-file build unpacks to a
+  temp directory at run time, which muddies that considerably.
+* A one-file build re-extracts ~200 MB of Qt on every launch.
+* Crash reports land next to the executable, where the user can find them,
+  rather than in a temp folder that is deleted on exit.
+"""
+
+import os
+import sys
+
+from PyInstaller.utils.hooks import collect_submodules
+
+ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(SPEC)), ".."))
+APP = os.path.join(ROOT, "app")
+SRC = os.path.join(ROOT, "src")
+
+# The app imports these lazily or by name in places, and PyInstaller's static
+# analysis cannot see through that.  Collecting the whole library is cheap --
+# it is pure Python and small -- and a missing format module would not show up
+# until a user opened a file of that type.
+HIDDEN = collect_submodules("dsotools") + collect_submodules("dso_app")
+
+# Qt is large and most of it is unused.  Each name here was removed and the app
+# re-launched; anything the app actually needs is absent from this list.
+#
+# QtQuick3D, QtQuick, QtQuickWidgets and QtQml came off this list when the
+# Models tab landed (APP_PLAN.md 10, Phase 5).  The viewport is a QQuickWidget
+# hosting a QtQuick3D View3D, so all four are load-bearing now.
+#
+# QtMultimedia came off it when the Audio tab landed.  An exclude beats a
+# static import, so leaving it here made the frozen app raise
+# ``ModuleNotFoundError`` at startup while running perfectly from source --
+# and the plugin DLLs added alongside it were no help at all, because the
+# Python binding was never there to load them.
+QT_UNUSED = [
+    "PySide6.QtBluetooth",
+    "PySide6.QtCharts",
+    "PySide6.QtDataVisualization",
+    "PySide6.QtDesigner",
+    "PySide6.QtHelp",
+    "PySide6.QtMultimediaWidgets",
+    "PySide6.QtNfc",
+    "PySide6.QtPositioning",
+    "PySide6.QtRemoteObjects",
+    "PySide6.QtScxml",
+    "PySide6.QtSensors",
+    "PySide6.QtSerialPort",
+    "PySide6.QtSpatialAudio",
+    "PySide6.QtSql",
+    "PySide6.QtStateMachine",
+    "PySide6.QtTest",
+    "PySide6.QtTextToSpeech",
+    "PySide6.QtWebChannel",
+    "PySide6.QtWebEngineCore",
+    "PySide6.QtWebEngineQuick",
+    "PySide6.QtWebEngineWidgets",
+    "PySide6.QtWebSockets",
+]
+
+EXCLUDES = QT_UNUSED + [
+    "tkinter",
+    "matplotlib",
+    "scipy",
+    "pandas",
+    "IPython",
+    "pytest",
+    "setuptools",
+    "pip",
+]
+
+def _multimedia_backend():
+    """Qt's media plugin and the codec libraries it loads.
+
+    ``QMediaPlayer`` resolves its backend at runtime through
+    ``plugins/multimedia``, so PyInstaller -- which follows imports -- does not
+    see it, and neither does the PySide6 hook. Without this the Audio tab looks
+    completely healthy and plays nothing at all, *only* in the frozen build,
+    which is the worst place for a defect to appear. Checked for by
+    ``tests/test_packaging.py``.
+    """
+    try:
+        import PySide6
+    except ImportError:
+        return [], []
+    root = os.path.dirname(PySide6.__file__)
+    plugins = os.path.join(root, "plugins", "multimedia")
+    datas = ([(plugins, os.path.join("PySide6", "plugins", "multimedia"))]
+             if os.path.isdir(plugins) else [])
+    # The ffmpeg plugin is the one that decodes MP3; it links these by name.
+    binaries = []
+    for name in os.listdir(root):
+        low = name.lower()
+        if low.endswith(".dll") and low.split("-")[0] in (
+                "avcodec", "avformat", "avutil", "swresample", "swscale"):
+            binaries.append((os.path.join(root, name), "PySide6"))
+    return datas, binaries
+
+
+MEDIA_DATAS, MEDIA_BINARIES = _multimedia_backend()
+
+#: The application icon, embedded in the executable *and* shipped beside the
+#: package.  Both: the embedded copy is what Explorer and the taskbar show for
+#: the .exe, and the file is what ``QApplication.setWindowIcon`` loads for the
+#: windows themselves.  Generated by ``tools/make_icon.py``.
+ICON = os.path.join(APP, "dso_app", "resources", "icon.ico")
+
+DATAS = [
+    # The documentation window reads these straight from the markdown the
+    # repository holds, so what ships and what is written cannot drift.
+    (os.path.join(ROOT, "specs"), "specs"),
+    (os.path.join(ROOT, "cli", "README.md"), "cli"),
+    (os.path.join(ROOT, "cli", "cli_3do.md"), "cli"),
+    (os.path.join(ROOT, "cli", "cli_aim.md"), "cli"),
+    (os.path.join(APP, "dso_app", "resources"),
+     os.path.join("dso_app", "resources")),
+    # The Lua API database.  Read through importlib.resources at runtime, so
+    # PyInstaller does not find it by following imports.
+    (os.path.join(SRC, "dsotools", "data"), os.path.join("dsotools", "data")),
+    (os.path.join(ROOT, "packaging", "THIRD_PARTY_LICENSES.md"), "."),
+]
+
+a = Analysis(
+    [os.path.join(APP, "main.py")],
+    pathex=[APP, SRC],
+    binaries=MEDIA_BINARIES,
+    datas=[(src, dst) for src, dst in DATAS if os.path.exists(src)] + MEDIA_DATAS,
+    hiddenimports=HIDDEN,
+    hookspath=[],
+    hooksconfig={},
+    runtime_hooks=[os.path.join(ROOT, "packaging", "runtime_hook_streams.py")],
+    excludes=EXCLUDES,
+    noarchive=False,
+    optimize=0,
+)
+
+# `excludes` above stops the Qt *Python* modules being imported.  It does not
+# stop PySide6's own PyInstaller hook collecting the Qt **binaries**, and
+# `Qt6WebEngineCore.dll` alone is 205 MB -- nearly half the build, for a module
+# this app never loads.  Filtering the collected files is the only thing that
+# actually keeps it out.
+#
+# Deliberately narrow.  `opengl32sw.dll` (20 MB) is Qt's software OpenGL
+# fallback and stays: the viewport is Qt Quick 3D, and a machine with no usable
+# GPU driver is exactly the one that needs it.  numpy's OpenBLAS stays for the
+# same reason -- a smaller download is not worth a bundle that fails on
+# somebody else's machine.
+WEBENGINE = ("webengine",)
+
+
+def _without_webengine(entries):
+    return [
+        e for e in entries
+        if not any(w in e[0].lower().replace("\\", "/") for w in WEBENGINE)
+    ]
+
+
+a.binaries = _without_webengine(a.binaries)
+a.datas = _without_webengine(a.datas)
+
+pyz = PYZ(a.pure)
+
+exe = EXE(
+    pyz,
+    a.scripts,
+    [],
+    exclude_binaries=True,
+    name="DarkstarOneModdingSuite",
+    debug=False,
+    bootloader_ignore_signals=False,
+    strip=False,
+    upx=False,          # UPX and Qt DLLs are a known source of false AV hits
+    # The configuration that matters, and the one that used to be untested.
+    console=os.environ.get("DSO_BUILD_CONSOLE") == "1",
+    disable_windowed_traceback=False,
+    argv_emulation=False,
+    target_arch=None,
+    codesign_identity=None,
+    entitlements_file=None,
+    icon=ICON if os.path.exists(ICON) else None,
+    version=os.path.join(ROOT, "packaging", "version_info.txt")
+    if sys.platform == "win32" and os.path.exists(
+        os.path.join(ROOT, "packaging", "version_info.txt")
+    )
+    else None,
+)
+
+coll = COLLECT(
+    exe,
+    a.binaries,
+    a.datas,
+    strip=False,
+    upx=False,
+    upx_exclude=[],
+    name="DarkstarOneModdingSuite",
+)

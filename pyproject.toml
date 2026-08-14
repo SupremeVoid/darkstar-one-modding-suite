@@ -1,0 +1,121 @@
+[build-system]
+# 77 is where PEP 639 landed: `license` as an SPDX string and
+# `license-files`.  Both are used below, and an older setuptools
+# rejects them -- on a fresh CI runner, which resolves the newest it
+# is allowed rather than the one a developer happens to have.
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dsotools"
+version = "1.0.0"
+description = "Format libraries and modding operations for Darkstar One (Ascaron, 2006)"
+readme = "README.md"
+# 3.11 because it is the oldest version that is not end-of-life. 3.9 went EOL
+# in October 2025 and 3.10 goes in October 2026, so neither is a version anyone
+# should be asked to run; declaring support for one means CI spends a leg on an
+# interpreter that receives no security fixes. That was the original objection
+# to the 3.8 this file carried for a year, and stopping at 3.9 only renamed it.
+#
+# Nothing in the code needs anything past 3.9 -- the syntax is 3.8-clean, and
+# `importlib.resources.files` (3.9) is the newest API used. This floor is about
+# what is supported, not what is required.
+#
+# The frozen app is unaffected: it embeds its own 3.13. This governs `pip
+# install dsotools`, and ruff derives its target from it.
+requires-python = ">=3.11"
+# PEP 639: an SPDX expression plus the file it refers to.  The older
+# `license = { text = "MIT" }` table form and the
+# `License :: OSI Approved` classifier are both rejected by setuptools
+# once `license-files` is present -- they are the pre-639 spelling of the
+# same fact, and having two spellings is how they drift.
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "DSO Modding Tools contributors" }]
+keywords = ["darkstar-one", "ascaron", "modding", "3do", "aim", "walhalla"]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Programming Language :: Python :: 3",
+  "Topic :: Games/Entertainment",
+  "Topic :: Multimedia :: Graphics :: 3D Modeling",
+]
+# Core stays dependency-free on purpose: `import dsotools` must work on a bare
+# interpreter so the CLI tools keep the "no third-party packages" property the
+# 3do converter has always had.
+dependencies = []
+
+[project.optional-dependencies]
+# Pixel work only.  Anything that decodes or writes images lives behind this.
+# Pillow 9.1 introduced ``Image.Resampling``, which ``edit/nineslice.py`` and
+# the atlas preview both use unconditionally.  9.0 would import and then fail
+# on the first resize.
+image = ["Pillow>=9.1", "numpy>=1.20"]
+dev = ["pytest>=7", "mypy>=1.5"]
+
+[project.urls]
+Homepage = "https://github.com/SupremeVoid/darkstar-one-modding-suite"
+Issues = "https://github.com/SupremeVoid/darkstar-one-modding-suite/issues"
+Source = "https://github.com/SupremeVoid/darkstar-one-modding-suite"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+dsotools = ["py.typed", "data/*.json"]
+
+[tool.ruff]
+# The table stays even though it is nearly empty: without one, ruff walks *up*
+# out of the repo looking for a config and lints against whatever it finds.
+#
+# `target-version` is deliberately absent.  Ruff derives it from
+# `requires-python` above, so the linter cannot drift from the packaging
+# metadata -- which is exactly what had happened: `requires-python` said 3.8 and
+# so did this, long after the code stopped being written for it, and ruff was
+# reporting modern syntax as unsupported.
+line-length = 100
+extend-exclude = ["build", "dist"]
+
+[tool.ruff.lint]
+# Deliberately bug-focused rather than style-focused.  This codebase is
+# 4,000-odd lines of validated format code whose layout is often load-bearing
+# (byte tables, offset arithmetic), so a reformatting linter would generate
+# churn and hide the findings that matter.  F and E9 are real errors; B is
+# flake8-bugbear, which catches genuine defect patterns.
+#
+# Widening this set is fine -- but do it in a commit that also fixes what it
+# finds, never by leaving CI red.
+select = ["F", "E9", "B"]
+ignore = [
+  # Every B023 in this tree is a false positive of the same shape: a closure
+  # defined in a loop body and *called within that same iteration*, never
+  # stored or deferred, so late binding cannot be observed.  Checked one by one
+  # (convert/gltf.py `_vertex_base`, offline_test_runner.py `resolve`).
+  "B023",
+  # B905 -- `zip()` without `strict=`.  Bugbear only raises this at 3.10+, so
+  # it appeared the moment `requires-python` moved to 3.11, in 27 places that
+  # were not touched.
+  #
+  # It is a real check and worth doing, but not in this commit and not in bulk:
+  # each site is a judgement between `strict=True`, which turns the call into an
+  # assertion that the two sequences match, and `strict=False`, which merely
+  # restates today's truncating behaviour.  Both are semantic decisions.  Some
+  # would be genuine wins -- `xmldoc.layout_for` compares the two lengths by
+  # hand immediately before zipping, so `strict=True` would encode that
+  # invariant in the call -- and some would be wrong, because several tests zip
+  # deliberately different-length line lists to find the first difference.
+  #
+  # Enable it in a commit that goes through all 27 and says which is which.
+  "B905",
+]
+
+[tool.ruff.lint.per-file-ignores]
+# Legacy pipelines and CLI entry points are scripts: they import for side
+# effects and exit via SystemExit, both of which are correct there.
+"cli/*" = ["E402"]
+"tests/legacy_pipeline_*.py" = ["E402"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# Corpus-backed tests skip themselves when no game data is reachable, so the
+# suite stays green on a clean checkout while still being exhaustive locally.
+markers = ["corpus: requires game data (set DSO_GAME_DATA)"]

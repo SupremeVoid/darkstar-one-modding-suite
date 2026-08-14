@@ -1,0 +1,100 @@
+name: Release (Windows)
+
+# Tag a release and this ships it:
+#
+#     git tag v1.0.0 && git push origin v1.0.0
+#
+# `workflow_dispatch` builds the same artifact without publishing anything,
+# which is how you check the release path works before trusting it with a tag.
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write        # required to create the release and upload to it
+
+jobs:
+  release:
+    name: build and publish
+    runs-on: windows-latest        # PyInstaller does not cross-compile
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+
+      - name: Install build dependencies
+        run: pip install -e ".[image]" PySide6 pyinstaller
+
+      # A release built from a tag that disagrees with the version compiled
+      # into it is worse than no release: the executable's own version resource
+      # is generated from dsotools.__version__, so a mismatch ships a binary
+      # that misreports itself and cannot be traced back to a commit.
+      # Same principle as build.py reading the PE header instead of trusting
+      # the flag it passed.
+      - name: Check the tag matches dsotools.__version__
+        if: startsWith(github.ref, 'refs/tags/v')
+        shell: bash
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          ver="$(python -c 'import dsotools; print(dsotools.__version__)')"
+          echo "tag=$tag  __version__=$ver"
+          if [ "$tag" != "$ver" ]; then
+            echo "::error::tag v$tag does not match dsotools.__version__ ($ver)."
+            echo "::error::Bump src/dsotools/__init__.py or retag, then try again."
+            exit 1
+          fi
+
+      - name: Build and verify
+        run: python packaging/build.py
+
+      # One folder, not one file: Qt ships as replaceable DLLs, which is what
+      # satisfies the LGPL relinking requirement for an MIT application
+      # (packaging/THIRD_PARTY_LICENSES.md).  Zipping it keeps that property.
+      #
+      # Compress-Archive rather than 7z: it is part of PowerShell itself, so it
+      # cannot go missing from a runner image.
+      - name: Package
+        shell: pwsh
+        run: |
+          $stamp = if ($env:GITHUB_EVENT_NAME -eq 'workflow_dispatch') {
+            $env:GITHUB_SHA.Substring(0, 7)
+          } else {
+            $env:GITHUB_REF_NAME
+          }
+          $asset = "DarkstarOneModdingSuite-$stamp-win64.zip"
+          Compress-Archive -Path dist/DarkstarOneModdingSuite -DestinationPath $asset
+          "ASSET=$asset" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+          "packaged $asset ($([math]::Round((Get-Item $asset).Length / 1MB)) MB)"
+
+      # Always uploaded, so a workflow_dispatch run is a real rehearsal: you
+      # get the identical artifact without a release being created.
+      - name: Upload artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: ${{ env.ASSET }}
+          path: ${{ env.ASSET }}
+
+      # gh is preinstalled on GitHub runners, so this needs no third-party
+      # action in the release path.
+      #
+      # The notes are written out in full rather than with --generate-notes.
+      # That flag's interaction with --notes is not something this repository
+      # can test before a tag is pushed, and the first run of a release path is
+      # the worst place to discover a flag conflict.  If you want the generated
+      # changelog instead, swap --notes for --generate-notes on its own.
+      - name: Publish release
+        if: startsWith(github.ref, 'refs/tags/v')
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" "$ASSET" \
+            --title "$GITHUB_REF_NAME" \
+            --notes "Windows build, one folder -- unzip anywhere and run \`DarkstarOneModdingSuite.exe\`. No installer, and **no game data is included**; point the app at your own installation.
+
+          Requires 64-bit Windows. Third-party licences ship inside the folder (\`THIRD_PARTY_LICENSES.md\`).
+
+          Full changelog: https://github.com/${{ github.repository }}/commits/${GITHUB_REF_NAME}"

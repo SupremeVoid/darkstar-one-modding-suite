@@ -1,0 +1,2031 @@
+{
+ "schema": 1,
+ "version": "1.0",
+ "edition": "gog",
+ "bundle": "lua/mission/missions.bin",
+ "missions": [
+  {
+   "name": "ALWAYS_000",
+   "type": "MTYPE_ALWAYS",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Achieved",
+    "Failed"
+   ],
+   "source": "Game/lua/mission/ALWAYS_000.lua"
+  },
+  {
+   "name": "ASCARONG",
+   "type": "MTYPE_ALWAYS",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/ASCARONG.lua"
+  },
+  {
+   "name": "Always_001",
+   "type": "MTYPE_ALWAYS",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/ALWAYS_001.lua"
+  },
+  {
+   "name": "BAR_001",
+   "type": "MTYPE_BAR",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/BAR_001.lua"
+  },
+  {
+   "name": "BAR_003",
+   "type": "MTYPE_BAR",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/BAR_003.lua"
+  },
+  {
+   "name": "BAR_004",
+   "type": "MTYPE_BAR",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/BAR_004.lua"
+  },
+  {
+   "name": "BAR_005",
+   "type": "MTYPE_BAR",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart"
+   ],
+   "source": "Game/lua/mission/BAR_005.lua"
+  },
+  {
+   "name": "BAR_006",
+   "type": "MTYPE_BAR",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Subtype",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/BAR_006_02.lua"
+  },
+  {
+   "name": "BAR_007",
+   "type": "MTYPE_BAR",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart"
+   ],
+   "source": "Game/lua/mission/BAR_007.lua"
+  },
+  {
+   "name": "BAR_009",
+   "type": "MTYPE_BAR",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart"
+   ],
+   "source": "Game/lua/mission/BAR_009.lua"
+  },
+  {
+   "name": "BAR_010",
+   "type": "MTYPE_BAR",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart"
+   ],
+   "source": "Game/lua/mission/BAR_010.lua"
+  },
+  {
+   "name": "BAR_011",
+   "type": "MTYPE_BAR",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart"
+   ],
+   "source": "Game/lua/mission/BAR_011.lua"
+  },
+  {
+   "name": "BAR_012",
+   "type": "MTYPE_BAR",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/BAR_012.lua"
+  },
+  {
+   "name": "BAR_013",
+   "type": "MTYPE_BAR",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/BAR_013.lua"
+  },
+  {
+   "name": "BAR_014",
+   "type": "MTYPE_BAR",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Achieved",
+    "Failed"
+   ],
+   "source": "Game/lua/mission/BAR_014.lua"
+  },
+  {
+   "name": "BAR_015",
+   "type": "MTYPE_BAR",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/BAR_015.lua"
+  },
+  {
+   "name": "BAR_016",
+   "type": "MTYPE_BAR",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/BAR_016.lua"
+  },
+  {
+   "name": "BAR_020",
+   "type": "MTYPE_BAR",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/BAR_020.lua"
+  },
+  {
+   "name": "BAR_021",
+   "type": "MTYPE_BAR",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/BAR_021.lua"
+  },
+  {
+   "name": "BAR_023",
+   "type": "MTYPE_BAR",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/BAR_023.lua"
+  },
+  {
+   "name": "BAR_024",
+   "type": "MTYPE_BAR",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/BAR_024.lua"
+  },
+  {
+   "name": "BAR_025",
+   "type": "MTYPE_BAR",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/BAR_025.lua"
+  },
+  {
+   "name": "BAR_026",
+   "type": "MTYPE_BAR",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/BAR_026.lua"
+  },
+  {
+   "name": "BAR_028",
+   "type": "MTYPE_BAR",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart"
+   ],
+   "source": "Game/lua/mission/BAR_028.lua"
+  },
+  {
+   "name": "BAR_029",
+   "type": "MTYPE_BAR",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/BAR_029.lua"
+  },
+  {
+   "name": "FLAK_01",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart"
+   ],
+   "source": "Game/lua/mission/FLAK_01.lua"
+  },
+  {
+   "name": "FLAK_01ASL",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart"
+   ],
+   "source": "Game/lua/mission/FLAK_01ASL.lua"
+  },
+  {
+   "name": "FLAK_02",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart"
+   ],
+   "source": "Game/lua/mission/FLAK_02.lua"
+  },
+  {
+   "name": "FLAK_02ASL",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart"
+   ],
+   "source": "Game/lua/mission/FLAK_02ASL.lua"
+  },
+  {
+   "name": "GLOBALSPACE_002",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Text",
+    "MissionStart"
+   ],
+   "source": "Game/lua/mission/GLOBALSPACE_002.lua"
+  },
+  {
+   "name": "GLOBALSPACE_005",
+   "type": "MTYPE_SPACE",
+   "group": 0,
+   "states": [
+    "Init",
+    "System",
+    "ActionCamEnd",
+    "Station",
+    "Failed"
+   ],
+   "source": "Game/lua/mission/GLOBALSPACE_005.lua"
+  },
+  {
+   "name": "GLOBALSPACE_009",
+   "type": "MTYPE_SPACE",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Subtype",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/GLOBALSPACE_009.lua"
+  },
+  {
+   "name": "GLOBALSPACE_013",
+   "type": "MTYPE_SPACE",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/GLOBALSPACE_013.lua"
+  },
+  {
+   "name": "GLOBALSPACE_016",
+   "type": "MTYPE_SPACE",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/GLOBALSPACE_016.lua"
+  },
+  {
+   "name": "GLOBALSPACE_017",
+   "type": "MTYPE_SPACE",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Text"
+   ],
+   "source": "Game/lua/mission/GLOBALSPACE_017.lua"
+  },
+  {
+   "name": "GLOBALSPACE_019",
+   "type": "MTYPE_SPACE",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Text"
+   ],
+   "source": "Game/lua/mission/GLOBALSPACE_019.lua"
+  },
+  {
+   "name": "GLOBALSPACE_020",
+   "type": "MTYPE_SPACE",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Text"
+   ],
+   "source": "Game/lua/mission/GLOBALSPACE_020.lua"
+  },
+  {
+   "name": "GLOBALSPACE_035",
+   "type": "MTYPE_SPACE",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Text"
+   ],
+   "source": "Game/lua/mission/GLOBALSPACE_035.lua"
+  },
+  {
+   "name": "GLOBALSPACE_036",
+   "type": "MTYPE_SPACE",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Text"
+   ],
+   "source": "Game/lua/mission/GLOBALSPACE_036.lua"
+  },
+  {
+   "name": "GLOBALSPACE_037",
+   "type": "MTYPE_SPACE",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Text"
+   ],
+   "source": "Game/lua/mission/GLOBALSPACE_037.lua"
+  },
+  {
+   "name": "GLOBAL_002",
+   "type": "MTYPE_TERMINAL",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Text",
+    "Subtype",
+    "MissionStart",
+    "Achieved",
+    "Failed",
+    "Destroy"
+   ],
+   "source": "Game/lua/mission/GLOBAL_002.lua"
+  },
+  {
+   "name": "GLOBAL_005",
+   "type": "MTYPE_TERMINAL",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Subtype",
+    "MissionStart",
+    "System",
+    "Destroy",
+    "Text",
+    "Achieved",
+    "Failed"
+   ],
+   "source": "Game/lua/mission/GLOBAL_005.lua"
+  },
+  {
+   "name": "GLOBAL_006",
+   "type": "MTYPE_TERMINAL",
+   "group": 0,
+   "states": [
+    "Init",
+    "Subtype",
+    "Create",
+    "MissionStart",
+    "Text",
+    "Achieved",
+    "Failed"
+   ],
+   "source": "Game/lua/mission/GLOBAL_006.lua"
+  },
+  {
+   "name": "GLOBAL_007",
+   "type": "MTYPE_TERMINAL",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Subtype",
+    "Text",
+    "MissionStart",
+    "Achieved",
+    "Failed"
+   ],
+   "source": "Game/lua/mission/GLOBAL_007.lua"
+  },
+  {
+   "name": "GLOBAL_009",
+   "type": "MTYPE_TERMINAL",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Text",
+    "Subtype",
+    "Failed",
+    "Achieved",
+    "Destroy",
+    "MissionStart"
+   ],
+   "source": "Game/lua/mission/GLOBAL_009.lua"
+  },
+  {
+   "name": "GLOBAL_010",
+   "type": "MTYPE_TERMINAL",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Text",
+    "Subtype",
+    "MissionStart",
+    "Achieved",
+    "Failed",
+    "Destroy"
+   ],
+   "source": "Game/lua/mission/GLOBAL_010.lua"
+  },
+  {
+   "name": "GLOBAL_011",
+   "type": "MTYPE_TERMINAL",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Text",
+    "Subtype",
+    "MissionStart",
+    "Achieved",
+    "Failed",
+    "Destroy"
+   ],
+   "source": "Game/lua/mission/GLOBAL_011.lua"
+  },
+  {
+   "name": "GLOBAL_016",
+   "type": "MTYPE_TERMINAL",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Text",
+    "Subtype",
+    "MissionStart",
+    "Failed",
+    "Achieved"
+   ],
+   "source": "Game/lua/mission/GLOBAL_016.lua"
+  },
+  {
+   "name": "GLOBAL_017",
+   "type": "MTYPE_TERMINAL",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Subtype",
+    "MissionStart",
+    "Text",
+    "Achieved",
+    "Failed"
+   ],
+   "source": "Game/lua/mission/GLOBAL_017.lua"
+  },
+  {
+   "name": "GLOBAL_018",
+   "type": "MTYPE_TERMINAL",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Text",
+    "Subtype",
+    "MissionStart",
+    "Achieved",
+    "Failed",
+    "Destroy"
+   ],
+   "source": "Game/lua/mission/GLOBAL_018.lua"
+  },
+  {
+   "name": "GLOBAL_019",
+   "type": "MTYPE_TERMINAL",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Subtype",
+    "MissionStart",
+    "Text",
+    "Achieved",
+    "Failed",
+    "Item"
+   ],
+   "source": "Game/lua/mission/GLOBAL_019.lua"
+  },
+  {
+   "name": "GLOBAL_021",
+   "type": "MTYPE_TERMINAL",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Subtype",
+    "MissionStart",
+    "Text",
+    "Achieved",
+    "Failed"
+   ],
+   "source": "Game/lua/mission/GLOBAL_021.lua"
+  },
+  {
+   "name": "GLOBAL_022",
+   "type": "MTYPE_TERMINAL",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Subtype",
+    "MissionStart",
+    "Text",
+    "Achieved",
+    "Failed"
+   ],
+   "source": "Game/lua/mission/GLOBAL_022.lua"
+  },
+  {
+   "name": "GLOBAL_023",
+   "type": "MTYPE_TERMINAL",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Subtype",
+    "MissionStart",
+    "Achieved",
+    "Failed"
+   ],
+   "source": "Game/lua/mission/GLOBAL_023.lua"
+  },
+  {
+   "name": "GLOBAL_024",
+   "type": "MTYPE_TERMINAL",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Subtype",
+    "MissionStart",
+    "Text",
+    "Achieved",
+    "Failed"
+   ],
+   "source": "Game/lua/mission/GLOBAL_024.lua"
+  },
+  {
+   "name": "GLOBAL_025",
+   "type": "MTYPE_TERMINAL",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Subtype",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/GLOBAL_025.lua"
+  },
+  {
+   "name": "GLOBAL_030",
+   "type": "MTYPE_TERMINAL",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Text",
+    "Subtype",
+    "MissionStart",
+    "Failed",
+    "Achieved"
+   ],
+   "source": "Game/lua/mission/GLOBAL_030.lua"
+  },
+  {
+   "name": "GLOBAL_032",
+   "type": "MTYPE_TERMINAL",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Subtype",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/GLOBAL_032.lua"
+  },
+  {
+   "name": "GLOBAL_035",
+   "type": "MTYPE_TERMINAL",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Subtype",
+    "MissionStart",
+    "Text",
+    "Achieved",
+    "Failed"
+   ],
+   "source": "Game/lua/mission/GLOBAL_035.lua"
+  },
+  {
+   "name": "GLOBAL_037",
+   "type": "MTYPE_TERMINAL",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Subtype",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/GLOBAL_037.lua"
+  },
+  {
+   "name": "GLOBAL_038",
+   "type": "MTYPE_TERMINAL",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Text",
+    "Subtype",
+    "MissionStart",
+    "Achieved",
+    "Failed",
+    "Destroy"
+   ],
+   "source": "Game/lua/mission/GLOBAL_038.lua"
+  },
+  {
+   "name": "GLOBAL_039",
+   "type": "MTYPE_TERMINAL",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Subtype",
+    "MissionStart",
+    "Text",
+    "Achieved",
+    "Failed"
+   ],
+   "source": "Game/lua/mission/GLOBAL_039.lua"
+  },
+  {
+   "name": "GLOBAL_042",
+   "type": "MTYPE_TERMINAL",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Subtype",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/GLOBAL_042.lua"
+  },
+  {
+   "name": "GLOBAL_043",
+   "type": "MTYPE_TERMINAL",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Subtype",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/GLOBAL_043.lua"
+  },
+  {
+   "name": "GLOBAL_044",
+   "type": "MTYPE_TERMINAL",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Subtype",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/GLOBAL_044.lua"
+  },
+  {
+   "name": "Global_000",
+   "type": "MTYPE_TERMINAL",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Subtype",
+    "MissionStart",
+    "Hostile",
+    "Timer"
+   ],
+   "source": "Game/lua/mission/GLOBAL_000.lua"
+  },
+  {
+   "name": "Global_001",
+   "type": "MTYPE_TERMINAL",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Subtype",
+    "MissionStart",
+    "System"
+   ],
+   "source": "Game/lua/mission/GLOBAL_001.lua"
+  },
+  {
+   "name": "MAIN_MENU",
+   "type": "MTYPE_MENU",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Text"
+   ],
+   "source": "Game/lua/mission/MAIN_MENU.lua"
+  },
+  {
+   "name": "PASSIVE_001",
+   "type": "MTYPE_SPACE",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Text",
+    "Subtype",
+    "MissionStart",
+    "Achieved",
+    "Failed",
+    "Destroy"
+   ],
+   "source": "Game/lua/mission/PASSIVE_001.lua"
+  },
+  {
+   "name": "PASSIVE_005",
+   "type": "MTYPE_SPACE",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Subtype",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/PASSIVE_005.lua"
+  },
+  {
+   "name": "PASSIVE_009",
+   "type": "MTYPE_SPACE",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Subtype",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/PASSIVE_009.lua"
+  },
+  {
+   "name": "PASSIVE_015",
+   "type": "MTYPE_SPACE",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Subtype",
+    "MissionStart",
+    "Text",
+    "System"
+   ],
+   "source": "Game/lua/mission/PASSIVE_015.lua"
+  },
+  {
+   "name": "PASSIVE_016",
+   "type": "MTYPE_SPACE",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Text",
+    "System"
+   ],
+   "source": "Game/lua/mission/PASSIVE_016.lua"
+  },
+  {
+   "name": "PASSIVE_017",
+   "type": "MTYPE_SPACE",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Subtype",
+    "MissionStart",
+    "Text",
+    "System"
+   ],
+   "source": "Game/lua/mission/PASSIVE_017.lua"
+  },
+  {
+   "name": "PASSIVE_018",
+   "type": "MTYPE_SPACE",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Text",
+    "Hostile"
+   ],
+   "source": "Game/lua/mission/PASSIVE_018.lua"
+  },
+  {
+   "name": "PASSIVE_019",
+   "type": "MTYPE_SPACE",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Text",
+    "System",
+    "Hostile",
+    "Wing"
+   ],
+   "source": "Game/lua/mission/PASSIVE_019.lua"
+  },
+  {
+   "name": "PASSIV_004",
+   "type": "MTYPE_SPACE",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Text"
+   ],
+   "source": "Game/lua/mission/PASSIV_004.lua"
+  },
+  {
+   "name": "PASSIV_014",
+   "type": "MTYPE_SPACE",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/PASSIV_014.lua"
+  },
+  {
+   "name": "PASSIV_020",
+   "type": "MTYPE_SPACE",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Subtype",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/PASSIV_020.lua"
+  },
+  {
+   "name": "PASSIV_021",
+   "type": "MTYPE_SPACE",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/PASSIV_021.lua"
+  },
+  {
+   "name": "PASSIV_022",
+   "type": "MTYPE_SPACE",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Subtype",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/PASSIV_022.lua"
+  },
+  {
+   "name": "PASSIV_023",
+   "type": "MTYPE_SPACE",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Text"
+   ],
+   "source": "Game/lua/mission/PASSIV_023.lua"
+  },
+  {
+   "name": "PASSIV_024",
+   "type": "MTYPE_SPACE",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Subtype",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/PASSIV_024.lua"
+  },
+  {
+   "name": "PASSIV_025",
+   "type": "MTYPE_SPACE",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Text"
+   ],
+   "source": "Game/lua/mission/PASSIV_025.lua"
+  },
+  {
+   "name": "PASSIV_028",
+   "type": "MTYPE_SPACE",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Text"
+   ],
+   "source": "Game/lua/mission/PASSIV_028.lua"
+  },
+  {
+   "name": "STORY_002",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Achieved",
+    "Failed",
+    "Hostile",
+    "StarshipDestroyed"
+   ],
+   "source": "Game/lua/mission/STORY_002.lua"
+  },
+  {
+   "name": "STORY_002ASL",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart"
+   ],
+   "source": "Game/lua/mission/STORY_002ASL.lua"
+  },
+  {
+   "name": "STORY_002BSL",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart"
+   ],
+   "source": "Game/lua/mission/STORY_002BSL.lua"
+  },
+  {
+   "name": "STORY_003",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/STORY_003.lua"
+  },
+  {
+   "name": "STORY_004",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Achieved",
+    "Failed"
+   ],
+   "source": "Game/lua/mission/STORY_004.lua"
+  },
+  {
+   "name": "STORY_004ASL",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy"
+   ],
+   "source": "Game/lua/mission/STORY_004ASL.lua"
+  },
+  {
+   "name": "STORY_005",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy"
+   ],
+   "source": "Game/lua/mission/STORY_005.lua"
+  },
+  {
+   "name": "STORY_005ASL",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart"
+   ],
+   "source": "Game/lua/mission/STORY_005ASL.lua"
+  },
+  {
+   "name": "STORY_005BSL",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart"
+   ],
+   "source": "Game/lua/mission/STORY_005BSL.lua"
+  },
+  {
+   "name": "STORY_006",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Achieved",
+    "Failed",
+    "MissionStart"
+   ],
+   "source": "Game/lua/mission/STORY_006.lua"
+  },
+  {
+   "name": "STORY_007_01",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Achieved",
+    "Failed",
+    "Container",
+    "StarshipDestroyed",
+    "Hostile",
+    "System",
+    "Timer",
+    "Station"
+   ],
+   "source": "Game/lua/mission/STORY_007_01.lua"
+  },
+  {
+   "name": "STORY_007_02",
+   "type": "MTYPE_STORY_CHAPTER",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Achieved",
+    "Failed",
+    "StarshipDestroyed",
+    "Hostile",
+    "Container"
+   ],
+   "source": "Game/lua/mission/STORY_007_02.lua"
+  },
+  {
+   "name": "STORY_007_03",
+   "type": "MTYPE_STORY_CHAPTER",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Achieved",
+    "Failed",
+    "StarshipDestroyed",
+    "Hostile",
+    "Shield"
+   ],
+   "source": "Game/lua/mission/STORY_007_03.lua"
+  },
+  {
+   "name": "STORY_007_04",
+   "type": "MTYPE_STORY_CHAPTER",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Achieved",
+    "Failed",
+    "Hostile"
+   ],
+   "source": "Game/lua/mission/STORY_007_04.lua"
+  },
+  {
+   "name": "STORY_008",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Text",
+    "Hostile",
+    "Shield"
+   ],
+   "source": "Game/lua/mission/STORY_008.lua"
+  },
+  {
+   "name": "STORY_009",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart"
+   ],
+   "source": "Game/lua/mission/STORY_009.lua"
+  },
+  {
+   "name": "STORY_009ASL",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart"
+   ],
+   "source": "Game/lua/mission/STORY_009ASL.lua"
+  },
+  {
+   "name": "STORY_010",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/STORY_010.lua"
+  },
+  {
+   "name": "STORY_010ASL",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart"
+   ],
+   "source": "Game/lua/mission/STORY_010ASL.lua"
+  },
+  {
+   "name": "STORY_011",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Achieved",
+    "Failed",
+    "Hostile"
+   ],
+   "source": "Game/lua/mission/STORY_011_01.lua"
+  },
+  {
+   "name": "STORY_011_02",
+   "type": "MTYPE_STORY_CHAPTER",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Achieved",
+    "Failed",
+    "Hostile"
+   ],
+   "source": "Game/lua/mission/STORY_011_02.lua"
+  },
+  {
+   "name": "STORY_011_03",
+   "type": "MTYPE_STORY_CHAPTER",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Achieved",
+    "Failed",
+    "System"
+   ],
+   "source": "Game/lua/mission/STORY_011_03.lua"
+  },
+  {
+   "name": "STORY_011_04",
+   "type": "MTYPE_STORY_CHAPTER",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Achieved",
+    "Failed",
+    "Text"
+   ],
+   "source": "Game/lua/mission/STORY_011_04.lua"
+  },
+  {
+   "name": "STORY_011_05",
+   "type": "MTYPE_STORY_CHAPTER",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Achieved",
+    "Failed",
+    "Text",
+    "StarshipDeath",
+    "Hostile"
+   ],
+   "source": "Game/lua/mission/STORY_011_05.lua"
+  },
+  {
+   "name": "STORY_011_06",
+   "type": "MTYPE_STORY_CHAPTER",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Achieved",
+    "Failed",
+    "Waypoint",
+    "Hostile"
+   ],
+   "source": "Game/lua/mission/STORY_011_06.lua"
+  },
+  {
+   "name": "STORY_012",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Achieved",
+    "Failed"
+   ],
+   "source": "Game/lua/mission/STORY_012.lua"
+  },
+  {
+   "name": "STORY_013",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/STORY_013.lua"
+  },
+  {
+   "name": "STORY_013ASL",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Text",
+    "Achieved",
+    "Failed"
+   ],
+   "source": "Game/lua/mission/Story_013ASL.lua"
+  },
+  {
+   "name": "STORY_014",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Achieved",
+    "Failed"
+   ],
+   "source": "Game/lua/mission/STORY_014.lua"
+  },
+  {
+   "name": "STORY_015",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Achieved",
+    "Failed",
+    "ActionCamEnd"
+   ],
+   "source": "Game/lua/mission/STORY_015.lua"
+  },
+  {
+   "name": "STORY_015B",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart"
+   ],
+   "source": "Game/lua/mission/STORY_015B.lua"
+  },
+  {
+   "name": "STORY_016",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Text",
+    "Destroy",
+    "Achieved",
+    "Failed",
+    "ActionCamEnd",
+    "MissionStart"
+   ],
+   "source": "Game/lua/mission/STORY_016.lua"
+  },
+  {
+   "name": "STORY_017",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy"
+   ],
+   "source": "Game/lua/mission/STORY_017.lua"
+  },
+  {
+   "name": "STORY_018",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "Text",
+    "Achieved",
+    "Failed",
+    "Hostile",
+    "StarshipDestroyed"
+   ],
+   "source": "Game/lua/mission/STORY_018.lua"
+  },
+  {
+   "name": "STORY_019",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/STORY_019.lua"
+  },
+  {
+   "name": "STORY_020A",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Text",
+    "Hostile"
+   ],
+   "source": "Game/lua/mission/STORY_020A.lua"
+  },
+  {
+   "name": "STORY_020B",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Text",
+    "Hostile"
+   ],
+   "source": "Game/lua/mission/STORY_020B.lua"
+  },
+  {
+   "name": "STORY_021",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Achieved",
+    "Failed"
+   ],
+   "source": "Game/lua/mission/STORY_021.lua"
+  },
+  {
+   "name": "STORY_021ASL",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart"
+   ],
+   "source": "Game/lua/mission/STORY_021ASL.lua"
+  },
+  {
+   "name": "STORY_022",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart"
+   ],
+   "source": "Game/lua/mission/STORY_022.lua"
+  },
+  {
+   "name": "STORY_022ASL",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart"
+   ],
+   "source": "Game/lua/mission/STORY_022ASL.lua"
+  },
+  {
+   "name": "STORY_022BSL",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart"
+   ],
+   "source": "Game/lua/mission/STORY_022BSL.lua"
+  },
+  {
+   "name": "STORY_023",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart"
+   ],
+   "source": "Game/lua/mission/STORY_023.lua"
+  },
+  {
+   "name": "STORY_024",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy"
+   ],
+   "source": "Game/lua/mission/STORY_024.lua"
+  },
+  {
+   "name": "STORY_025",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Achieved",
+    "Failed",
+    "Container",
+    "Container"
+   ],
+   "source": "Game/lua/mission/STORY_025.lua"
+  },
+  {
+   "name": "STORY_025ASL",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart"
+   ],
+   "source": "Game/lua/mission/STORY_025ASL.lua"
+  },
+  {
+   "name": "STORY_026",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy"
+   ],
+   "source": "Game/lua/mission/STORY_026.lua"
+  },
+  {
+   "name": "STORY_026ASL",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart"
+   ],
+   "source": "Game/lua/mission/STORY_026ASL.lua"
+  },
+  {
+   "name": "STORY_027",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Text",
+    "Hostile"
+   ],
+   "source": "Game/lua/mission/STORY_027.lua"
+  },
+  {
+   "name": "STORY_028",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Achieved",
+    "Failed",
+    "Wing",
+    "Hostile"
+   ],
+   "source": "Game/lua/mission/STORY_028.lua"
+  },
+  {
+   "name": "STORY_028ASL",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "System"
+   ],
+   "source": "Game/lua/mission/STORY_028ASL.lua"
+  },
+  {
+   "name": "STORY_028BSL",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/STORY_028BSL.lua"
+  },
+  {
+   "name": "STORY_029",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy"
+   ],
+   "source": "Game/lua/mission/STORY_029.lua"
+  },
+  {
+   "name": "STORY_029ASL",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart"
+   ],
+   "source": "Game/lua/mission/STORY_029ASL.lua"
+  },
+  {
+   "name": "STORY_030",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Achieved",
+    "Failed"
+   ],
+   "source": "Game/lua/mission/STORY_030.lua"
+  },
+  {
+   "name": "STORY_030ASL",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart"
+   ],
+   "source": "Game/lua/mission/STORY_030ASL.lua"
+  },
+  {
+   "name": "STORY_031A",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy"
+   ],
+   "source": "Game/lua/mission/STORY_031A.lua"
+  },
+  {
+   "name": "STORY_031B",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy"
+   ],
+   "source": "Game/lua/mission/STORY_031B.lua"
+  },
+  {
+   "name": "STORY_031C",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy"
+   ],
+   "source": "Game/lua/mission/STORY_031C.lua"
+  },
+  {
+   "name": "STORY_031D",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy"
+   ],
+   "source": "Game/lua/mission/STORY_031D.lua"
+  },
+  {
+   "name": "STORY_032",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy"
+   ],
+   "source": "Game/lua/mission/STORY_032.lua"
+  },
+  {
+   "name": "STORY_032ASL",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart"
+   ],
+   "source": "Game/lua/mission/STORY_032ASL.lua"
+  },
+  {
+   "name": "TUNNEL_000",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/TUNNEL_000.lua"
+  },
+  {
+   "name": "TUNNEL_001",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy"
+   ],
+   "source": "Game/lua/mission/TUNNEL_001.lua"
+  },
+  {
+   "name": "TUNNEL_002",
+   "type": "MTYPE_STORY",
+   "group": 0,
+   "states": [
+    "Init",
+    "Create",
+    "Destroy",
+    "MissionStart",
+    "Text"
+   ],
+   "source": "Game/lua/mission/TUNNEL_002.lua"
+  }
+ ]
+}

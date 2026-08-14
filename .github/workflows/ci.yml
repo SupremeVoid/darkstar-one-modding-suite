@@ -1,0 +1,119 @@
+name: CI
+
+# Pull requests get the full gate: lint, the test suite on both platforms, and
+# a real PyInstaller build.  The build matters more than it looks -- the app's
+# packaged configuration (windowed, therefore no stdout and no stderr) is the
+# one no developer ever runs, and it has broken three times already.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+
+jobs:
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+
+      # Pinned on purpose.  An unpinned linter adds rules on its own schedule
+      # and turns CI red on a PR that changed nothing -- upgrade it in a commit
+      # that also fixes whatever the new version finds.
+      - name: Install ruff
+        run: pip install ruff==0.16.3
+
+      # Config lives in pyproject.toml [tool.ruff]; see the comment there for
+      # why the rule set is bug-focused rather than style-focused.
+      - name: Ruff
+        run: ruff check --output-format=github .
+
+      # The project's own static check for the Qt layer, which cannot be
+      # unit-tested.  It is AST-based, so it needs no PySide6 installed.
+      - name: Check app layer
+        run: python tools/check_app.py
+
+  test:
+    name: test ${{ matrix.os }} py${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ["3.11", "3.13"]
+        # One leg installs Qt so the tests that reach the QThreadPool plumbing
+        # actually run.  Not all four: PySide6 is a ~200 MB download, the app
+        # logic it guards is deliberately Qt-free, and a guard that runs once
+        # per push is a guard.  Skipping it everywhere would be the quiet way
+        # of deleting those tests.
+        include:
+          - os: windows-latest
+            python: "3.13"
+            qt: true
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python }}
+
+      # The `image` extra is installed deliberately.  Without Pillow and numpy
+      # the atlas and DDS tests skip themselves silently, and a rule that could
+      # not run must not look like a rule that passed.
+      - name: Install
+        run: pip install -e ".[image,dev]"
+
+      - name: Install Qt (one leg only)
+        if: matrix.qt
+        run: pip install PySide6
+
+      # Corpus tests skip without game data, which is never present on a
+      # runner; -ra lists them so a skip is visible rather than implied.
+      - name: Pytest
+        run: python -m pytest -ra
+
+      # The pytest-free fallback in tools/ is what verify_all uses where pytest
+      # is absent, so it has to keep working too.  It has caught a real defect
+      # that pytest did not: it reads test sources itself, and got the encoding
+      # wrong on a non-UTF-8 locale.
+      - name: Offline test runner
+        run: python tools/offline_test_runner.py
+
+  build:
+    name: build (windows)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+
+      - name: Install build dependencies
+        run: pip install -e ".[image]" PySide6 pyinstaller
+
+      # build.py verifies what it built rather than trusting the flags it
+      # passed: it reads the executable's own PE subsystem field to confirm the
+      # binary is GUI, checks Qt's platform plugin shipped, and checks the
+      # third-party licence notice shipped (PySide6 is LGPLv3).  A non-zero
+      # exit here means one of those is wrong.
+      - name: Build and verify
+        run: python packaging/build.py
+
+      - name: Upload build
+        uses: actions/upload-artifact@v7
+        with:
+          name: DarkstarOneModdingSuite-pr${{ github.event.number || github.run_number }}
+          path: dist/DarkstarOneModdingSuite/
+          retention-days: 14

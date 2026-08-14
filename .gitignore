@@ -1,0 +1,11 @@
+__pycache__/
+*.egg-info/
+.ruff_cache/
+.pytest_cache/
+
+# PyInstaller output (packaging/build.py).  dist/ alone is ~153 MB.
+/build/
+/dist/
+# Generated from dsotools.__version__ on every Windows build, so that it
+# cannot drift from it -- see packaging/build.py:write_version_info.
+/packaging/version_info.txt
