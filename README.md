@@ -8,6 +8,8 @@ application built on it, and a set of command-line converters.
 > the game's data and requires an installed copy. All game formats, names and
 > trade marks belong to their respective owners.
 
+https://github.com/user-attachments/assets/4ae70d5c-18b1-4e41-8308-c8bbd6011998
+
 ## Why it exists
 
 The game shipped a modding kit but it is very barebones and the engine almost never says
